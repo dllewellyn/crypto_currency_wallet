@@ -2,6 +2,7 @@ import 'package:crypto_currency_wallet/account/account_data.dart';
 import 'package:crypto_currency_wallet/widgets/account_title.dart';
 import 'package:crypto_currency_wallet/widgets/balance_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(MyApp());
@@ -41,9 +42,16 @@ class AccountListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16.0),
-      child: Row (
+      child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 16.0, right: 16.0),
+            child: SvgPicture.network(
+              urlImageForCurrency(accountData.currencyValue),
+              placeholderBuilder: (context) => CircularProgressIndicator(),
+            ),
+          ),
           AccountTitle(supportedCurrency: accountData.currencyValue),
           Spacer(),
           BalanceWidget(
