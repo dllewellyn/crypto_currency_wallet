@@ -22,6 +22,11 @@ class SupportedCurrency {
   SupportedCurrency({this.id, this.name});
 }
 
+String urlImageForCurrency(SupportedCurrency currency) {
+  return "https://coinbaseliveexchange.appspot.com/currencies/image/" +
+      currency.id;
+}
+
 AccountData mockAccount() => AccountData(
     key: "Test data",
     balance: 1,
