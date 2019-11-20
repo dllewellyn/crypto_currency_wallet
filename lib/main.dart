@@ -12,10 +12,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.red,
-      ),
+          primarySwatch: Colors.red,
+          textTheme: TextTheme(
+            title: TextStyle(
+              fontFamily: "stonehenge",
+              fontWeight: FontWeight.bold,
+              fontSize: 26,
+            ),
+            caption: TextStyle(
+              fontFamily: "stonehenge",
+              fontSize: 18,
+            ),
+            headline: TextStyle(
+              fontFamily: "carolingia",
+              fontSize: 34,
+              fontWeight: FontWeight.bold,
+            ),
+          )),
       home: MyHomePage(),
     );
   }
@@ -25,11 +41,14 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: AccountListItem(
-        accountData: mockAccount(),
-      ),
-    );
+        appBar: AppBar(),
+        body: ListView(
+          children: mockAccount()
+              .map((account) => AccountListItem(
+                    accountData: account,
+                  ))
+              .toList(),
+        ));
   }
 }
 
@@ -40,24 +59,32 @@ class AccountListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.all(16.0),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.only(left: 16.0, right: 16.0),
-            child: SvgPicture.network(
-              urlImageForCurrency(accountData.currencyValue),
-              placeholderBuilder: (context) => CircularProgressIndicator(),
+    return Card(
+      elevation: 2,
+      child: Container(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: SvgPicture.network(
+                urlImageForCurrency(accountData.currencyValue),
+                placeholderBuilder: (context) => CircularProgressIndicator(),
+              ),
             ),
-          ),
-          AccountTitle(supportedCurrency: accountData.currencyValue),
-          Spacer(),
-          BalanceWidget(
-            balance: accountData.balance,
-          )
-        ],
+            AccountTitle(
+              supportedCurrency: accountData.currencyValue,
+            ),
+            Spacer(),
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: BalanceWidget(
+                balance: accountData.balance,
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
