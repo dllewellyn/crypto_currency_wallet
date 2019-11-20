@@ -27,9 +27,17 @@ String urlImageForCurrency(SupportedCurrency currency) {
       currency.id;
 }
 
-AccountData mockAccount() => AccountData(
-    key: "Test data",
-    balance: 1,
-    currencyValue: SupportedCurrency(id: "BTC", name: "Bitcoin"),
-    provider: "coinbase",
-    uid: "123123");
+List<AccountData> mockAccount() => [
+      AccountData(
+          key: "Test data",
+          balance: 0.50,
+          currencyValue: SupportedCurrency(id: "BTC", name: "Bitcoin"),
+          provider: "coinbase",
+          uid: "123123"),
+  AccountData(
+      key: "Test data2",
+      balance: 100,
+      currencyValue: SupportedCurrency(id: "ETH", name: "Ether"),
+      provider: "coinbase",
+      uid: "123123")
+    ];
