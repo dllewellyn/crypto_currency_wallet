@@ -1,8 +1,8 @@
-import 'package:crypto_currency_wallet/account/account_data.dart';
-import 'package:crypto_currency_wallet/widgets/account_title.dart';
-import 'package:crypto_currency_wallet/widgets/balance_widget.dart';
+import 'package:crypto_currency_wallet/account/transaction_data.dart';
+import 'package:crypto_currency_wallet/screens/transaction_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
+import 'screens/home_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,6 +14,20 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
+      initialRoute: "/",
+      onGenerateRoute: (settings) {
+        Widget widget;
+
+        if (settings.name == "/") {
+          widget = MyHomePage();
+        } else if (settings.name == "/detail") {
+          widget = TransactionScreen(
+            transactions: settings.arguments as List<Transaction>,
+          );
+        }
+
+        return MaterialPageRoute(builder: (_) => widget);
+      },
       theme: ThemeData(
           primarySwatch: Colors.red,
           textTheme: TextTheme(
@@ -32,60 +46,6 @@ class MyApp extends StatelessWidget {
               fontWeight: FontWeight.bold,
             ),
           )),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(),
-        body: ListView(
-          children: mockAccount()
-              .map((account) => AccountListItem(
-                    accountData: account,
-                  ))
-              .toList(),
-        ));
-  }
-}
-
-class AccountListItem extends StatelessWidget {
-  final AccountData accountData;
-
-  const AccountListItem({Key key, this.accountData}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      child: Container(
-        padding: const EdgeInsets.all(16.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: SvgPicture.network(
-                urlImageForCurrency(accountData.currencyValue),
-                placeholderBuilder: (context) => CircularProgressIndicator(),
-              ),
-            ),
-            AccountTitle(
-              supportedCurrency: accountData.currencyValue,
-            ),
-            Spacer(),
-            Padding(
-              padding: const EdgeInsets.all(16.0),
-              child: BalanceWidget(
-                balance: accountData.balance,
-              ),
-            )
-          ],
-        ),
-      ),
     );
   }
 }
