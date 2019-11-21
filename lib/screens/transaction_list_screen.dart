@@ -1,6 +1,7 @@
 import 'package:crypto_currency_wallet/account/account_data.dart';
 import 'package:crypto_currency_wallet/account/transaction_data.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class TransactionListScreen extends StatelessWidget {
   final AccountData accountData;
@@ -10,32 +11,41 @@ class TransactionListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Widget widget;
+    List<Widget> widget;
+
+    var heroWidget = Padding(
+      padding: const EdgeInsets.all(16.0),
+      child: Hero(
+        tag: accountData.currencyValue.id,
+        child: SvgPicture.network(
+          urlImageForCurrency(accountData.currencyValue),
+          placeholderBuilder: (context) => CircularProgressIndicator(),
+          height: 60,
+          width: 60,
+        ),
+      ),
+    );
 
     if (accountData.transactions.isEmpty) {
-      widget = Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Center(
+      widget = [
+        heroWidget,
+        Center(
             child: Text(
           "You don't have any transactions for this account",
           style: Theme.of(context).textTheme.title,
           textAlign: TextAlign.center,
-        )),
-      );
+        ))
+      ];
     } else {
-      widget = Padding(
-        padding: const EdgeInsets.only(top: 20),
-        child: ListView(
-          children: accountData.transactions
-              .map((transaction) => TransactionListItem(
-                    transaction: transaction,
-                  ))
-              .toList(),
-        ),
-      );
+      widget = [heroWidget]..addAll(accountData.transactions
+          .map((transaction) => TransactionListItem(
+                transaction: transaction,
+              ))
+          .toList());
     }
 
-    return Scaffold(appBar: AppBar(), body: Container(child: widget));
+    return Scaffold(
+        appBar: AppBar(), body: Container(child: ListView(children: widget)));
   }
 }
 
