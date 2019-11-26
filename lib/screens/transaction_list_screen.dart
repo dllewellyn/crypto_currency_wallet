@@ -57,10 +57,22 @@ class TransactionListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(
-        transaction.amount,
-        style: Theme.of(context).textTheme.caption,
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Row(
+          children: <Widget>[
+            Text(
+              transaction.date,
+              style: Theme.of(context).textTheme.body1
+            ),
+            Spacer(),
+            Text(
+              transaction.amount,
+              style: Theme.of(context).textTheme.caption,
+            ),
+          ],
+        ),
       ),
     );
   }
