@@ -14,6 +14,12 @@ jobs:
     - uses: subosito/flutter-action@v1.1.1
       with:
         channel: 'dev'
+      env:
+        KEY_JKS: ${{ KEY_JKS }}
+        KEY_PASSWORD: ${{ ALIAS_PASSWORD }}
+        ALIAS_PASSWORD: ${{ KEY_PASSWORD }}
+    - uses: actions/checkout@v1
+
     - run: flutter pub get
     - run: flutter test
     - run: flutter build apk
