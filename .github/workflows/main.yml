@@ -19,7 +19,7 @@ jobs:
         KEY_PASSWORD: ${{ ALIAS_PASSWORD }}
         ALIAS_PASSWORD: ${{ KEY_PASSWORD }}
     - uses: actions/checkout@v1
-    - run: echo "$KEY_JKS" > key.jks 
+    - run: echo $KEY_JKS > key.jks 
     - run: flutter pub get
     - run: flutter test
     - run: flutter build apk
