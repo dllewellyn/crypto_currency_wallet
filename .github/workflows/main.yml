@@ -16,7 +16,7 @@ jobs:
       with:
         channel: 'dev'
       env:
-        KEY_JKS: ${{ KEY_JKS }}
-        KEY_PASSWORD: ${{ ALIAS_PASSWORD }}
-        ALIAS_PASSWORD: ${{ KEY_PASSWORD }}
+        KEY_JKS: ${{ secrets.KEY_JKS }}
+        KEY_PASSWORD: ${{ secrets.ALIAS_PASSWORD }}
+        ALIAS_PASSWORD: ${{ secrets.KEY_PASSWORD }}
         run: echo $KEY_JKS > key.jks && flutter pub get && flutter test && flutter build apk
