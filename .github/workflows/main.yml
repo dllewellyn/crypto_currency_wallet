@@ -8,19 +8,19 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/setup-java@v1
-      with:
-        java-version: '12.x'
-    - uses: subosito/flutter-action@v1.1.1
-      with:
-        channel: 'dev'
-    - uses: actions/checkout@v1
-    - env:
-        KEY_JKS: ${{ KEY_JKS }}
-        KEY_PASSWORD: ${{ ALIAS_PASSWORD }}
-        ALIAS_PASSWORD: ${{ KEY_PASSWORD }}
-    - run: echo $KEY_JKS > key.jks 
-    - run: openssl base64 -d -in key.jks -out android/key.jks
-    - run: flutter pub get
-    - run: flutter test
-    - run: flutter build apk
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '12.x'
+      - uses: subosito/flutter-action@v1.1.1
+        with:
+          channel: 'dev'
+      - uses: actions/checkout@v1
+      - env:
+          KEY_JKS: ${{ KEY_JKS }}
+          KEY_PASSWORD: ${{ ALIAS_PASSWORD }}
+          ALIAS_PASSWORD: ${{ KEY_PASSWORD }}
+      - run: echo $KEY_JKS > key.jks 
+      - run: openssl base64 -d -in key.jks -out android/key.jks
+      - run: flutter pub get
+      - run: flutter test
+      - run: flutter build apk
