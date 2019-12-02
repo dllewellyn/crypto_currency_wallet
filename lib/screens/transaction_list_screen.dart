@@ -49,26 +49,54 @@ class TransactionListScreen extends StatelessWidget {
   }
 }
 
-class TransactionListItem extends StatelessWidget {
+class TransactionListItem extends StatefulWidget {
   final Transaction transaction;
 
   const TransactionListItem({Key key, @required this.transaction})
       : super(key: key);
 
   @override
+  _TransactionListItemState createState() => _TransactionListItemState();
+}
+
+class _TransactionListItemState extends State<TransactionListItem> with TickerProviderStateMixin {
+  Animation<Color> _animation;
+  AnimationController _controller;
+  
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(vsync: this, duration: Duration(milliseconds: 500));
+    _animation = ColorTween(begin: Colors.black,
+       end: double.parse(widget.transaction.amount) > 0 ? Colors.green : Colors.red,
+    ).animate(_controller)..addListener(() {
+      setState((){});
+    });
+    // Tell the animation to start
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Card(
+      shape: RoundedRectangleBorder(side: BorderSide(color: _animation.value), borderRadius: BorderRadius.all(Radius.circular(9))),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
           children: <Widget>[
             Text(
-              transaction.date,
+              widget.transaction.date,
               style: Theme.of(context).textTheme.body1
             ),
             Spacer(),
             Text(
-              transaction.amount,
+              widget.transaction.amount,
               style: Theme.of(context).textTheme.caption,
             ),
           ],
