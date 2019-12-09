@@ -5,7 +5,7 @@ class Transaction {
   String id;
   String status;
   final String type;
-  final String date;
+  final DateTime date;
 
   Transaction(
       {this.amount,
@@ -18,6 +18,37 @@ class Transaction {
 }
 
 List<Transaction> mockTransactions() => [
-      Transaction(amount: "5", type: "SEND", date: "20/11/19 19:27"),
-      Transaction(amount: "-5", type: "SEND", date: "20/11/19 19:28"),
+      Transaction(
+          amount: "6",
+          type: "RECEIVE",
+          date: DateTime.now().subtract(Duration(hours: 56))),
+      Transaction(
+          amount: "6",
+          type: "RECEIVE",
+          date: DateTime.now().subtract(Duration(hours: 44))),
+      Transaction(
+          amount: "-6",
+          type: "RECEIVE",
+          date: DateTime.now().subtract(Duration(hours: 32))),
+      Transaction(
+          amount: "2",
+          type: "RECEIVE",
+          date: DateTime.now().subtract(Duration(hours: 12))),
+      Transaction(
+          amount: "-12",
+          type: "SEND",
+          date: DateTime.now().subtract(Duration(hours: 5))),
+      Transaction(
+          amount: "6",
+          type: "RECEIVE",
+          date: DateTime.now().subtract(Duration(hours: 4))),
+      Transaction(
+          amount: "-3",
+          type: "SEND",
+          date: DateTime.now().subtract(Duration(hours: 3))),
+      Transaction(
+          amount: "5",
+          type: "RECEIVE",
+          date: DateTime.now().subtract(Duration(hours: 2))),
+      Transaction(amount: "-5", type: "SEND", date: DateTime.now()),
     ];
