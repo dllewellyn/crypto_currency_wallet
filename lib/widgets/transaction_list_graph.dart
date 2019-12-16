@@ -14,7 +14,7 @@ class SimpleTimeSeriesChart extends StatelessWidget {
 
     List<TimeSeriesSimple> mapped = transactions.map((item) {
       runningTotal += int.parse(item.amount);
-      return TimeSeriesSimple(time: item.date, sales: runningTotal);
+      return TimeSeriesSimple(time: DateTime.parse(item.date), sales: runningTotal);
     }).toList();
 
     List<charts.Series<TimeSeriesSimple, DateTime>> list = [
