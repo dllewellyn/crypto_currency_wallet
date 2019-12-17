@@ -1,6 +1,7 @@
 import 'package:crypto_currency_wallet/account/account_data.dart';
 import 'package:crypto_currency_wallet/account/transaction_data.dart';
 import 'package:crypto_currency_wallet/widgets/transaction_list_graph.dart';
+import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
@@ -103,7 +104,7 @@ class _TransactionListItemState extends State<TransactionListItem>
         AnimationController(vsync: this, duration: Duration(milliseconds: 500));
     _animation = ColorTween(
       begin: Colors.black,
-      end: double.parse(widget.transaction.amount) > 0
+      end: Decimal.parse(widget.transaction.amount).toDouble() > 0
           ? Colors.green
           : Colors.red,
     ).animate(_controller)

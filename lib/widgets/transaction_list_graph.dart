@@ -13,7 +13,7 @@ class SimpleTimeSeriesChart extends StatelessWidget {
     var runningTotal = 0;
 
     List<TimeSeriesSimple> mapped = transactions.map((item) {
-      runningTotal += int.parse(item.amount);
+      runningTotal += double.parse(item.amount).toInt();
       return TimeSeriesSimple(time: DateTime.parse(item.date), sales: runningTotal);
     }).toList();
 

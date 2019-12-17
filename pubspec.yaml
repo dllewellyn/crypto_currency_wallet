@@ -20,6 +20,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^0.14.4
+  decimal: ^0.3.0
   cupertino_icons: ^0.1.2
   charts_common: ^0.8.1
   charts_flutter: ^0.8.1

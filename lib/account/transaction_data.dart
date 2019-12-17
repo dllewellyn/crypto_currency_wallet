@@ -29,4 +29,14 @@ class Transaction {
 }
 
 
-List<Transaction> mockTransactions() => List();
+List<Transaction> mockTransactions() => [
+  Transaction(
+    amount: "0.0047768600000000",
+    type: "Send",
+    id: "Iasdasd",
+    balance: "0.0047768600000000",
+    date: "2019-06-17T07:36:55.409089Z",
+    description: "Description",
+    status: "SENT"
+  )
+];
