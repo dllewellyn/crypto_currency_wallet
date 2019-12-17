@@ -18,7 +18,7 @@ class AllUserDetails {
 @JsonSerializable()
 class AccountData {
   final String key;
-  final SupportedCurrency currencyValue;
+  final String currencyValue;
   final double balance;
   final String uid;
   final String provider;
@@ -38,18 +38,6 @@ class AccountData {
   Map<String, dynamic> toJson() => _$AccountDataToJson(this);
 }
 
-@JsonSerializable()
-class SupportedCurrency {
-  final String id;
-  final String name;
-
-  SupportedCurrency({this.id, this.name});
-
-  factory SupportedCurrency.fromJson(Map<String, dynamic> json) =>
-      _$SupportedCurrencyFromJson(json);
-
-  Map<String, dynamic> toJson() => _$SupportedCurrencyToJson(this);
-}
 
 
 String urlImageForCurrency(SupportedCurrency currency) {
