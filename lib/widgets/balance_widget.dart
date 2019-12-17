@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class BalanceWidget extends StatelessWidget {
-  final double balance;
+  final String balance;
 
   const BalanceWidget({Key key, this.balance}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Text(
-      balance.toString(),
+      balance,
       style: Theme.of(context).textTheme.headline,
     );
   }

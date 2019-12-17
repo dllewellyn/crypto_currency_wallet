@@ -23,7 +23,7 @@ Map<String, dynamic> _$AllUserDetailsToJson(AllUserDetails instance) =>
 AccountData _$AccountDataFromJson(Map<String, dynamic> json) {
   return AccountData(
     currencyValue: json['currencyValue'] as String,
-    balance: (json['balance'] as num)?.toDouble(),
+    balance: json['balance'] as String,
     uid: json['uid'] as String,
     provider: json['provider'] as String,
     key: json['key'] as String,

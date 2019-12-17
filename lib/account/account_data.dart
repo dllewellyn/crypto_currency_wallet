@@ -19,7 +19,7 @@ class AllUserDetails {
 class AccountData {
   final String key;
   final String currencyValue;
-  final double balance;
+  final String balance;
   final String uid;
   final String provider;
   List<Transaction> transactions;
@@ -48,14 +48,14 @@ String urlImageForCurrency(String currency) {
 List<AccountData> mockAccount() => [
   AccountData(
       key: "Test data",
-      balance: 0.50,
+      balance: "0.50",
       currencyValue: "BTC",
       provider: "coinbase",
       transactions: mockTransactions(),
       uid: "123123"),
   AccountData(
       key: "Test data2",
-      balance: 100,
+      balance: "100",
       currencyValue: "Eth",
       provider: "coinbase",
       transactions: [],
