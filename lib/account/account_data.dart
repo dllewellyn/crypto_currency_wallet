@@ -40,23 +40,23 @@ class AccountData {
 
 
 
-String urlImageForCurrency(SupportedCurrency currency) {
+String urlImageForCurrency(String currency) {
   return "https://coinbaseliveexchange.appspot.com/currencies/image/" +
-      currency.id;
+      currency;
 }
 
 List<AccountData> mockAccount() => [
   AccountData(
       key: "Test data",
       balance: 0.50,
-      currencyValue: SupportedCurrency(id: "BTC", name: "Bitcoin"),
+      currencyValue: "BTC",
       provider: "coinbase",
       transactions: mockTransactions(),
       uid: "123123"),
   AccountData(
       key: "Test data2",
       balance: 100,
-      currencyValue: SupportedCurrency(id: "ETH", name: "Ether"),
+      currencyValue: "Eth",
       provider: "coinbase",
       transactions: [],
       uid: "123123")

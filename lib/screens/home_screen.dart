@@ -40,7 +40,7 @@ class AccountListItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Hero(
-                  tag: accountData.currencyValue.id,
+                  tag: accountData.currencyValue,
                   child: SvgPicture.network(
                     urlImageForCurrency(accountData.currencyValue),
                     placeholderBuilder: (context) => CircularProgressIndicator(),

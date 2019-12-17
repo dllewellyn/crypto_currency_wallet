@@ -24,7 +24,7 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
     var heroWidget = Padding(
       padding: const EdgeInsets.all(16.0),
       child: Hero(
-        tag: widget.accountData.currencyValue.id,
+        tag: widget.accountData.currencyValue,
         child: SvgPicture.network(
           urlImageForCurrency(widget.accountData.currencyValue),
           placeholderBuilder: (context) => CircularProgressIndicator(),
