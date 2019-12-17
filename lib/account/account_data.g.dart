@@ -22,10 +22,7 @@ Map<String, dynamic> _$AllUserDetailsToJson(AllUserDetails instance) =>
 
 AccountData _$AccountDataFromJson(Map<String, dynamic> json) {
   return AccountData(
-    currencyValue: json['currencyValue'] == null
-        ? null
-        : SupportedCurrency.fromJson(
-            json['currencyValue'] as Map<String, dynamic>),
+    currencyValue: json['currencyValue'] as String,
     balance: (json['balance'] as num)?.toDouble(),
     uid: json['uid'] as String,
     provider: json['provider'] as String,
@@ -45,17 +42,4 @@ Map<String, dynamic> _$AccountDataToJson(AccountData instance) =>
       'uid': instance.uid,
       'provider': instance.provider,
       'transactions': instance.transactions,
-    };
-
-SupportedCurrency _$SupportedCurrencyFromJson(Map<String, dynamic> json) {
-  return SupportedCurrency(
-    id: json['id'] as String,
-    name: json['name'] as String,
-  );
-}
-
-Map<String, dynamic> _$SupportedCurrencyToJson(SupportedCurrency instance) =>
-    <String, dynamic>{
-      'id': instance.id,
-      'name': instance.name,
     };
