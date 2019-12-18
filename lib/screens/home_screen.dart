@@ -5,18 +5,67 @@ import 'package:crypto_currency_wallet/widgets/balance_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class MyHomePage extends StatelessWidget {
+class MyHomePage extends StatefulWidget {
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  var filterApplied = false;
+
   @override
   Widget build(BuildContext context) {
+    var data = mockAccount();
+    if (filterApplied) {
+      data = data.where((item) => double.parse(item.balance) > 0).toList();
+    }
     return Scaffold(
         appBar: AppBar(),
         body: ListView(
-          children: mockAccount()
+          children: [
+            FilterCheckBox(
+              checkBoxValue: filterApplied,
+              onCheckChanged: _filterClicked,
+            )
+          ]..addAll(data
               .map((account) => AccountListItem(
                     accountData: account,
                   ))
-              .toList(),
+              .toList()),
         ));
+  }
+
+  void _filterClicked() {
+    setState(() {
+      filterApplied = !filterApplied;
+    });
+  }
+}
+
+class FilterCheckBox extends StatelessWidget {
+  final bool checkBoxValue;
+  final Function onCheckChanged;
+
+  const FilterCheckBox({
+    Key key,
+    this.checkBoxValue,
+    this.onCheckChanged,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Text("Hide empty accounts"),
+          Checkbox(
+            value: checkBoxValue,
+            onChanged: (changed) => onCheckChanged(),
+          ),
+        ],
+      ),
+    );
   }
 }
 
@@ -43,7 +92,8 @@ class AccountListItem extends StatelessWidget {
                   tag: accountData.currencyValue,
                   child: SvgPicture.network(
                     urlImageForCurrency(accountData.currencyValue),
-                    placeholderBuilder: (context) => CircularProgressIndicator(),
+                    placeholderBuilder: (context) =>
+                        CircularProgressIndicator(),
                   ),
                 ),
               ),
