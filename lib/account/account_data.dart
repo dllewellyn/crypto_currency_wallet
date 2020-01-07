@@ -48,7 +48,7 @@ String urlImageForCurrency(String currency) {
 List<AccountData> mockAccount() => [
   AccountData(
       key: "Test data",
-      balance: "0.50",
+      balance: "0.0034860113",
       currencyValue: "BTC",
       provider: "coinbase",
       transactions: mockTransactions(),

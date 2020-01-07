@@ -104,7 +104,9 @@ class AccountListItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: BalanceWidget(
-                  balance: accountData.balance,
+                  balance: double.parse(accountData.balance) < 1
+                      ? double.parse(accountData.balance).toStringAsPrecision(5)
+                      : accountData.balance,
                 ),
               )
             ],

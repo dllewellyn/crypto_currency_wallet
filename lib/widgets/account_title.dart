@@ -1,4 +1,3 @@
-import 'package:crypto_currency_wallet/account/account_data.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
