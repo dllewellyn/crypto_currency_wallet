@@ -13,6 +13,8 @@ class Transaction {
   final String type;
   final String date;
 
+  DateTime get dateTime => DateTime.parse(date);
+
   Transaction(
       {this.amount,
         this.type,

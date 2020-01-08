@@ -1,9 +1,11 @@
 import 'package:crypto_currency_wallet/account/account_data.dart';
 import 'package:crypto_currency_wallet/account/transaction_data.dart';
+import 'package:crypto_currency_wallet/extensions/displayable_price.dart';
 import 'package:crypto_currency_wallet/widgets/transaction_list_graph.dart';
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:intl/intl.dart';
 
 class TransactionListScreen extends StatefulWidget {
   final AccountData accountData;
@@ -75,8 +77,9 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
 
   void dateChanged(DateTime dateChanged) {
     var index = widget.accountData.transactions
-        .indexWhere((t) => t.date == dateChanged)
-        .toDouble() + 2;
+            .indexWhere((t) => t.dateTime == dateChanged)
+            .toDouble() +
+        2;
 
     _scrollController.jumpTo(index);
   }
@@ -131,11 +134,13 @@ class _TransactionListItemState extends State<TransactionListItem>
         padding: const EdgeInsets.all(16.0),
         child: Row(
           children: <Widget>[
-            Text(widget.transaction.date.toString(),
+            Text(
+                DateFormat('yyyy-MM-dd – kk:mm')
+                    .format(widget.transaction.dateTime),
                 style: Theme.of(context).textTheme.body1),
             Spacer(),
             Text(
-              widget.transaction.amount,
+              Utils.toDisplayablePrice(widget.transaction.amount),
               style: Theme.of(context).textTheme.caption,
             ),
           ],

@@ -1,4 +1,5 @@
 import 'package:crypto_currency_wallet/account/account_data.dart';
+import 'package:crypto_currency_wallet/extensions/displayable_price.dart';
 import 'package:crypto_currency_wallet/navigator/screens.dart';
 import 'package:crypto_currency_wallet/widgets/account_title.dart';
 import 'package:crypto_currency_wallet/widgets/balance_widget.dart';
@@ -104,9 +105,7 @@ class AccountListItem extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: BalanceWidget(
-                  balance: double.parse(accountData.balance) < 1
-                      ? double.parse(accountData.balance).toStringAsPrecision(5)
-                      : accountData.balance,
+                  balance: Utils.toDisplayablePrice(accountData.balance),
                 ),
               )
             ],
