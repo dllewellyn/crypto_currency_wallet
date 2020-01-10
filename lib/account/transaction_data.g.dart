@@ -15,6 +15,9 @@ Transaction _$TransactionFromJson(Map<String, dynamic> json) {
     status: json['status'] as String,
     balance: json['balance'] as String,
     description: json['description'] as String,
+    nativeCurrency: json['nativeCurrency'] as String,
+    nativeAmount: json['nativeAmount'] as String,
+    dollarValue: json['dollarValue'] as String,
   );
 }
 
@@ -25,6 +28,9 @@ Map<String, dynamic> _$TransactionToJson(Transaction instance) =>
       'description': instance.description,
       'id': instance.id,
       'status': instance.status,
+      'nativeCurrency': instance.nativeCurrency,
+      'nativeAmount': instance.nativeAmount,
+      'dollarValue': instance.dollarValue,
       'type': instance.type,
       'date': instance.date,
     };

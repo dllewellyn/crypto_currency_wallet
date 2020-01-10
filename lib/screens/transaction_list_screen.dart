@@ -132,17 +132,24 @@ class _TransactionListItemState extends State<TransactionListItem>
           borderRadius: BorderRadius.all(Radius.circular(9))),
       child: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Row(
+        child: Column(
           children: <Widget>[
-            Text(
-                DateFormat('yyyy-MM-dd – kk:mm')
-                    .format(widget.transaction.dateTime),
-                style: Theme.of(context).textTheme.body1),
-            Spacer(),
-            Text(
-              Utils.toDisplayablePrice(widget.transaction.amount),
-              style: Theme.of(context).textTheme.caption,
+            Row(
+              children: <Widget>[
+                Text(
+                    DateFormat('yyyy-MM-dd – kk:mm')
+                        .format(widget.transaction.dateTime),
+                    style: Theme.of(context).textTheme.body1),
+                Spacer(),
+                Text(
+                  Utils.toDisplayablePrice(widget.transaction.amount),
+                  style: Theme.of(context).textTheme.caption,
+                ),
+              ],
             ),
+            Row(
+              children: [Spacer(), Text("\$${widget.transaction.dollarValue}")],
+            )
           ],
         ),
       ),
