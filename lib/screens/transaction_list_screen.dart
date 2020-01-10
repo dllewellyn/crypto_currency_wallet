@@ -148,7 +148,13 @@ class _TransactionListItemState extends State<TransactionListItem>
               ],
             ),
             Row(
-              children: [Spacer(), Text("\$${widget.transaction.dollarValue}")],
+              children: [
+                Spacer(),
+                Text(
+                  "\$${widget.transaction.dollarValue}",
+                  style: Theme.of(context).textTheme.caption,
+                )
+              ],
             )
           ],
         ),
