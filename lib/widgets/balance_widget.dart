@@ -10,7 +10,7 @@ class BalanceWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       balance,
-      style: Theme.of(context).textTheme.headline,
+      style: Theme.of(context).textTheme.headline1,
     );
   }
 }

@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
           splashColor: Colors.redAccent,
           primarySwatch: Colors.red,
           textTheme: TextTheme(
-            title: TextStyle(
+            headline6: TextStyle(
               fontFamily: "stonehenge",
               fontWeight: FontWeight.bold,
               fontSize: 26,
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
               fontFamily: "stonehenge",
               fontSize: 18,
             ),
-            headline: TextStyle(
+            headline1: TextStyle(
               fontFamily: "carolingia",
               fontSize: 34,
               fontWeight: FontWeight.bold,

@@ -43,7 +43,7 @@ class _TransactionListScreenState extends State<TransactionListScreen> {
         Center(
             child: Text(
           "You don't have any transactions for this account",
-          style: Theme.of(context).textTheme.title,
+          style: Theme.of(context).textTheme.headline6,
           textAlign: TextAlign.center,
         ))
       ];
@@ -139,7 +139,7 @@ class _TransactionListItemState extends State<TransactionListItem>
                 Text(
                     DateFormat('yyyy-MM-dd – kk:mm')
                         .format(widget.transaction.dateTime),
-                    style: Theme.of(context).textTheme.body1),
+                    style: Theme.of(context).textTheme.bodyText1),
                 Spacer(),
                 Text(
                   Utils.toDisplayablePrice(widget.transaction.amount),
