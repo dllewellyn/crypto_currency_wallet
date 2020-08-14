@@ -17,6 +17,8 @@ environment:
   sdk: ">=2.7.0 <3.0.0"
 
 dependencies:
+
+  flutter_bloc: ^6.0.1
   flutter:
     sdk: flutter
   flutter_svg: ^0.18.0
@@ -26,6 +28,7 @@ dependencies:
   charts_flutter: ^0.9.0
   injector: ^1.0.8
   json_annotation: ^3.0.1
+  google_fonts: ^1.1.0
 
 dev_dependencies:
   flutter_launcher_icons: ^0.7.5
@@ -33,7 +36,8 @@ dev_dependencies:
     sdk: flutter
   build_runner: ^1.9.2
   json_serializable: ^3.4.0
-
+  mockito: ^4.1.1
+  bloc_test: ^7.0.0
 flutter:
 
   uses-material-design: true
