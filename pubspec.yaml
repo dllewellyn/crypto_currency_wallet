@@ -29,6 +29,12 @@ dependencies:
   injector: ^1.0.8
   json_annotation: ^3.0.1
   google_fonts: ^1.1.0
+  crypto_repository:
+    path:
+      external/crypto_repository
+  equatable: ^1.2.3
+  shimmer: ^1.1.1
+
 
 dev_dependencies:
   flutter_launcher_icons: ^0.7.5

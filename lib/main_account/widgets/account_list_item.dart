@@ -1,4 +1,3 @@
-import 'package:crypto_currency_wallet/account/account_data.dart';
 import 'package:crypto_currency_wallet/extensions/displayable_price.dart';
 import 'package:crypto_currency_wallet/navigator/navigator_cubit.dart';
 import 'package:crypto_currency_wallet/widgets/account_title.dart';
@@ -7,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:crypto_repository/crypto_repository.dart';
 
 class AccountListItem extends StatelessWidget {
   final AccountData accountData;

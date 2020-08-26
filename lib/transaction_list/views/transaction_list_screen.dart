@@ -1,13 +1,12 @@
-import 'package:crypto_currency_wallet/account/account_data.dart';
-import 'package:crypto_currency_wallet/account/transaction_data.dart';
 import 'package:crypto_currency_wallet/extensions/displayable_price.dart';
+
 import 'package:crypto_currency_wallet/widgets/transaction_list_graph.dart';
 import 'package:crypto_currency_wallet/widgets/widgets.dart';
 import 'package:decimal/decimal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:intl/intl.dart';
-
+import 'package:crypto_repository/crypto_repository.dart';
 import '../../styles.dart';
 
 class TransactionListScreen extends StatefulWidget {

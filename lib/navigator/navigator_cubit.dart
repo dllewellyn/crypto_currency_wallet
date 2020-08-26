@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
-import 'package:crypto_currency_wallet/account/account_data.dart';
 import 'package:crypto_currency_wallet/main_account/views/main_account_view.dart';
 import 'package:crypto_currency_wallet/transaction_list/views/transaction_list_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+import 'package:crypto_repository/crypto_repository.dart';
 
 part 'navigator_state.dart';
 

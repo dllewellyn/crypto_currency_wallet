@@ -1,9 +1,10 @@
+import 'package:equatable/equatable.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'transaction_data.g.dart';
 
 @JsonSerializable()
-class Transaction {
+class Transaction extends Equatable {
   final String amount;
   String balance;
   String description;
@@ -33,6 +34,9 @@ class Transaction {
       _$TransactionFromJson(json);
 
   Map<String, dynamic> toJson() => _$TransactionToJson(this);
+
+  @override
+  List<Object> get props => [this.id];
 }
 
 List<Transaction> mockTransactions() => [

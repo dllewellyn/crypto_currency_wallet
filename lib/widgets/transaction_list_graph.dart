@@ -1,6 +1,6 @@
 import 'package:charts_flutter/flutter.dart' as charts;
-import 'package:crypto_currency_wallet/account/transaction_data.dart';
 import 'package:flutter/material.dart';
+import 'package:crypto_repository/crypto_repository.dart';
 
 class SimpleTimeSeriesChart extends StatelessWidget {
   final List<charts.Series> seriesList;

@@ -4,6 +4,7 @@ import 'package:crypto_currency_wallet/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:crypto_repository/crypto_repository.dart';
 
 void main() {
   runApp(MyApp());
@@ -18,9 +19,15 @@ class MyApp extends StatelessWidget {
       navigatorKey: _navigatorKey,
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      initialRoute: "/",
-      home: BlocProvider.value(
-          value: NavigatorCubit(_navigatorKey), child: MainAccountView()),
+      home: MultiRepositoryProvider(
+        providers: [
+          RepositoryProvider<WalletRepository>(
+            create: (_) => DefaultRemoteRepository(),
+          )
+        ],
+        child: BlocProvider.value(
+            value: NavigatorCubit(_navigatorKey), child: MainAccountView()),
+      ),
       theme: ThemeData(
           textTheme: TextTheme(
         bodyText1: GoogleFonts.nunito(),
